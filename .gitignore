@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+gitssh
+gitssh.pub
+q1_ask_ai_answer.txt
