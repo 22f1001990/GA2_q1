@@ -22,7 +22,6 @@ class TokenRequest(BaseModel):
 @app.post("/verify")
 async def verify(req: TokenRequest):
     token = req.token
-    print (token)
     try:
         # Decode and verify signature + expiration automatically.
         # We explicitly require RS256 and verify audience + issuer manually below.
