@@ -5,15 +5,13 @@ from datetime import datetime, timezone
 
 app = FastAPI()
 
-PUBLIC_KEY = """-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2okOHspNjgA+2rTLbeuY
+PUBLIC_KEY = """MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2okOHspNjgA+2rTLbeuY
 cxiP/hG8C6Sb9iwg3yiLAA4HCnpITcbWCSelbvbYGuc3EbNy4xFyf5Cbj5DHJMID
 EkryOgyd2giIIIBOUBj8S63uGcnRpOBh9NFatfNwheKuzsPuVNldu6A9cNteNpXc
 WyJjG2axVfmq7i6SuKr1JoWYG7xTTAvKPujSl4OtsQfO3h5NepzdfXpr28oNnzfW
 ed+zclR6BcmNNo/WVfJ4xyCLSf0BCOgdTgW6PdaChd1l9VDetJZVEgC5tkyvXsfI
 SI6iyrYbKR0NEBSqq4XkadEjsCs4F1RncsS4LlgniT7GlkL9Mce3b0wGLs9/7ZIX
-dQIDAQAB
------END PUBLIC KEY-----"""
+dQIDAQAB"""
 
 EXPECTED_ISS = "https://idp.exam.local"
 EXPECTED_AUD = "tds-969pasph.apps.exam.local"
@@ -24,6 +22,7 @@ class TokenRequest(BaseModel):
 @app.post("/verify")
 async def verify(req: TokenRequest):
     token = req.token
+    print (token)
     try:
         # Decode and verify signature + expiration automatically.
         # We explicitly require RS256 and verify audience + issuer manually below.
