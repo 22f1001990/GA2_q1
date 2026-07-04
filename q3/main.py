@@ -6,12 +6,12 @@ from dotenv import load_dotenv
 import yaml
 
 load_dotenv()  # loads .env into os.environ
-print("hellow")
+#print("hellow")
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"], allow_headers=["*"])
 
 defaults = {
-    "port": 8003,
+    "port": 8000,
     "workers": 1,
     "debug": False,
     "log_level": "info",
