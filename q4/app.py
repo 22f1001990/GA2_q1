@@ -4,12 +4,16 @@ import redis
 app = FastAPI()
 
 # Connect to Redis service in docker-compose
-r = redis.Redis(
-    host="redis",
-    port=6379,
-    decode_responses=True
-)
-
+if redis_url:
+    # Render (or any environment that provides REDIS_URL)
+    r = redis.from_url(redis_url, decode_responses=True)
+else:
+    # Local Docker Compose
+    r = redis.Redis(
+        host="redis",
+        port=6379,
+        decode_responses=True
+    )
 
 @app.post("/hit/{key}")
 def hit(key: str):
