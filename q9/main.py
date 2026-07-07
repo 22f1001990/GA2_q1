@@ -17,7 +17,7 @@ app.add_middleware(
 
 T = 53
 RATE_LIMIT = 17
-WINDOW_SECONDS = 1
+WINDOW_SECONDS = 10
 
 idempotency_store = {}
 client_requests = {}
